@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  db:
+    container_name: pgdb
+    image: postgres
+    command: ["postgres", "-c", "listen_addresses=*"]
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: postgres
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+  jupyter:
+    container_name: notebook
+    image: jupyter/minimal-notebook
+    restart: always
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/home/jovyan/work
+  load-data:
+    build: . 
+    depends_on:
+      - db
+    command: ["./wait-for.sh", "pgdb:5432", "--", "python", "./load-data.py"]
