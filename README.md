@@ -52,20 +52,20 @@ Ensure you have recent versions of Docker and Docker Compose installed.
 
 ### Building the Images
 This will build all the images referenced in the Docker Compose file. You will need to re-run this command after making any code changes (you can also specify individual services to build if more convenient).
-...
+```
 docker-compose build
-...
+```
 
 ### Starting the Services
 To run the services. It may take a short while to run the start-up scripts.
 
-...
+```
 docker-compose up
-...
+```
 
 
 ### Cleaning Up
 To tidy up, bring down the containers and delete them.
-...
+```
 docker-compose down
-...
+```
