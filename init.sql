@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS circuits (
     name VARCHAR(255) NOT NULL,
     location VARCHAR(255),
     lat FLOAT,
-    long FLOAT
+    lng FLOAT
 );
 
 -- Create the season table
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS sessions (
     type VARCHAR(255),
     start_date TIMESTAMP,
     end_date TIMESTAMP,
-    gmt_offset INT
+    gmt_offset TIME
 );
 
 -- Create the results table
@@ -137,13 +137,13 @@ SELECT ch.championship_id, generate_series(ch.inauguration, EXTRACT(YEAR FROM cu
 FROM championship as ch;
 
 
-INSERT INTO circuits (circuit_reference, name, location, lat, long)
+INSERT INTO circuits (circuit_reference, name, location, lat, lng)
 SELECT
     circuit_reference,
     name,
     location,
     lat,
-    long
+    lng
 FROM
     (VALUES
         ('Montreal', 'Circuit Gilles-Villeneuve', 'Montreal', 45.506, -73.525),
@@ -171,4 +171,4 @@ FROM
         ('Abu Dhabi', 'Yas Marina Circuit', 'Abu Dhabi', 24.470, 54.603),
         ('Las Vegas', 'Las Vegas Street Circuit', 'Las Vegas', 36.169, -115.136),
         ('Miami', 'Miami International Autodrome', 'Miami', 25.778, -80.202)
-    ) AS data (circuit_reference, name, location, lat, long);
+    ) AS data (circuit_reference, name, location, lat, lng);
