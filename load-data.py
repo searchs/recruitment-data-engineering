@@ -13,6 +13,7 @@ connection = psycopg2.connect(
 )
 cursor = connection.cursor()  # Create a cursor object to interact with the database
 
+print('Running')
 # Loop through the years 2017 through to 2023
 for year in range(2020, 2024):
     # Make a GET request to the Formula 1 live timing site for each year
@@ -23,6 +24,7 @@ for year in range(2020, 2024):
 
     # Extract the season data
     season = data["Year"]
+    print('Season:', season)
 
     # Get the season_id from the season table using the year and championship short_name
     cursor.execute(
@@ -61,6 +63,8 @@ for year in range(2020, 2024):
 
         try:
             # Insert the data into the 'events' table
+            print('Events',season_id, race_round, circuit_id, official_name)
+            
             cursor.execute(
                 """
                 INSERT INTO race_data.events (season_id, race_round, circuit_id, official_name) 

@@ -29,7 +29,7 @@ We have provided a GitHub repository containing:
 ## Problem
 We would like you to complete a sequence of steps. We anticipate this will take no more than a couple of hours of your time.
 1. Fork the git repo to your own GitHub account.
-2. Create a Jupyter notebook Python script to insert the events from 2021 onwards within the `races.csv` into the `events` table.
+2. Create a Jupyter notebook Python script to insert the results from 2021 onwards within the `results.csv` into the `results` table.
 3. Analyse the existing `update-circuits.ipynb` notebook. It has some issues with the data it is inserting into the database. Can you describe what the problem is and suggest some approaches to prevent the issue?
 4. Share a link to your cloned git repo with us so we can review your approach during the technical interview.
 
