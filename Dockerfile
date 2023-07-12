@@ -1,4 +1,5 @@
 FROM python:3.8
+RUN mkdir -p /app
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y libpq-dev netcat-openbsd wget curl unzip bash
